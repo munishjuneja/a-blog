@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
+
 		@article = Article.new(article_params)
 		@article.user = current_user
 		if @article.save
@@ -23,7 +24,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		
+		@comments = Comment.all
 	end
 
 	def destroy

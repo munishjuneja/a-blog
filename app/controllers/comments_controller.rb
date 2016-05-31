@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 	
 	def new
+		@comment = Comment.new
+		@comments = Comment.all
 	end
 
 	def create
@@ -12,6 +14,7 @@ class CommentsController < ApplicationController
 		end
 		
 		if @comment.save
+			flash[:success]="success"
 			redirect_to article_path(@article)
 		else
 			flash[:danger]="You must log in first"
@@ -20,6 +23,13 @@ class CommentsController < ApplicationController
 
 	end
 
+	def destroy
+		@comment = Comment.find[:id]
+		@comment.destroy
+		flash[:danger]="comment delete successfully"
+		redirect_to articles_path
+	end
+	
 	private
 	def comment_params
 		params.require(:comment).permit(:description)

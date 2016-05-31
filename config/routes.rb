@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get 'articles/:id', to: 'comments#new'
+  post 'articles/:id', to: 'comments#create'
+  delete 'articles/:id', to: 'comments#destroy'
   #get 'welcome/test', to: 'welcome#test'
 
   # Example of regular route:

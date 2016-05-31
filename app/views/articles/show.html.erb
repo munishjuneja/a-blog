@@ -33,4 +33,50 @@
 
 <%=link_to 'View all articles',articles_path, class: "btn btn-xs btn-success"%>
 </div>
+
+
 </div>
+
+<div class="well col-xs-8 col-xs-offset-2">
+	<h4 style="color:#666">Comments:</h4>
+		<%@comments.each do |t|%>
+			<%if @article.id == t.article_id%>
+			<ul class="comment-ul">
+				<div class="well">
+						<li class="comment-by">
+				 <%=link_to (gravatar_for t.user,size:20)%> <%=t.user.username%>:
+						<%if logged_in? && (t.user == current_user || current_user.admin?)%>
+							<span style="float:right; font-size:16px; margin-top:10px;">
+								<%= link_to "x", article_path(@article)%>
+							</span>
+						<%end%>
+				</li>
+				<li class="comment-body">
+					<%=t.description%>
+				</li>
+				</div>
+			</ul>
+			<%end%>
+		<%end%>
+
+</div>
+
+	<div class="well col-xs-8 col-xs-offset-2">
+		<%= form_for(:comment, :html =>{class: "form-horizontal", role: "form"}, url: article_path(@article)) do |f|%>
+		
+		<div class="form-group " >
+	
+			<div class="col-xs-8">
+				<%=f.text_area :description,class: "form-control",rows:10, placeholder: "Leave a comment", autocomplete: "off"%>
+				</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-8">
+				<%=f.submit "Post a Comment",class:"btn btn-primary btn-lg"%>
+			</div>
+		</div>
+		
+	<%end%>
+
+	</div>

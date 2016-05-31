@@ -71,7 +71,16 @@ $navbar-default-bg: #000;
 	padding-left: 0;
 }
 
+.comment-ul{
+	list-style: none;
+	}
 
+.comment-by{
+	font-weight: bold;
+}
+.comment-body{
+	margin-left: 40px;
+}
 footer{
 	margin-top: 10px;
 	padding-top:5px;
