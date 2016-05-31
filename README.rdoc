@@ -1,1 +1,1 @@
-- This is repository for blog app in ruby on rails
+- This is a repository for blog app in ruby on rails
