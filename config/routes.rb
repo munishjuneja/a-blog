@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'articles/:id', to: 'comments#new'
   post 'articles/:id', to: 'comments#create'
   delete 'articles/:id', to: 'comments#destroy'
+  resources :categories, except: [:destroy]
   #get 'welcome/test', to: 'welcome#test'
 
   # Example of regular route:
